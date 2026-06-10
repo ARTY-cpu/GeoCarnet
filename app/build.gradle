@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.geocarnet'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.geocarnet"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // Composants d'interface STANDARD d'Android (AndroidX).
+    // Ce ne sont pas des bibliothèques "qui font le travail" : ce sont les briques
+    // de base fournies par Android pour l'interface (équivalent d'une bibliothèque système).
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
+    // org.json (utilisé pour le JSON) est inclus dans Android : pas de dépendance à ajouter.
+}

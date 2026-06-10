@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Écran de création d'une fiche (mode PORTRAIT) -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/champ_titre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/titre_fiche"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/champ_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/note"
+            android:inputType="textMultiLine"
+            android:minLines="2" />
+
+        <TextView
+            android:id="@+id/texte_gps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/gps_attente" />
+
+        <ImageView
+            android:id="@+id/apercu_photo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#EEEEEE"
+            android:contentDescription="@string/photo"
+            android:scaleType="centerCrop" />
+
+        <Button
+            android:id="@+id/bouton_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/prendre_photo" />
+
+        <Button
+            android:id="@+id/bouton_enregistrer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enregistrer" />
+
+        <!-- Visible uniquement quand on ouvre une fiche existante -->
+        <Button
+            android:id="@+id/bouton_supprimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/supprimer"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

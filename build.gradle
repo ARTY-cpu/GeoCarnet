@@ -1,0 +1,5 @@
+// Fichier de configuration au niveau du projet.
+// AGP 8.6.0 est compatible avec Gradle 8.7 (fixé dans gradle/wrapper/gradle-wrapper.properties).
+plugins {
+    id 'com.android.application' version '8.6.0' apply false
+}

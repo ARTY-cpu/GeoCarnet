@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">GeoCarnet</string>
+
+    <!-- Menu -->
+    <string name="menu_liste">Notes</string>
+    <string name="menu_carte">Map</string>
+    <string name="menu_sync">Sync</string>
+    <string name="menu_apropos">About</string>
+    <string name="ouvrir_menu">Open menu</string>
+    <string name="fermer_menu">Close menu</string>
+
+    <!-- List -->
+    <string name="rechercher">Search\u2026</string>
+    <string name="ajouter">Add</string>
+    <string name="photo">Photo</string>
+
+    <!-- Edit -->
+    <string name="titre_nouvelle_fiche">New note</string>
+    <string name="titre_fiche">Title</string>
+    <string name="note">Note</string>
+    <string name="prendre_photo">Take a photo</string>
+    <string name="enregistrer">Save</string>
+    <string name="gps_attente">Locating\u2026</string>
+    <string name="gps_format">Lat: %1$.5f  Lon: %2$.5f\nStreet: %3$s</string>
+    <string name="rue_inconnue">Unknown street</string>
+    <string name="titre_obligatoire">Please enter a title</string>
+    <string name="fiche_enregistree">Note saved</string>
+
+    <!-- Sync -->
+    <string name="sync_envoyer">Send to MySQL</string>
+    <string name="sync_recevoir">Get from MySQL</string>
+    <string name="sync_pret">Ready</string>
+    <string name="sync_en_cours">Syncing\u2026</string>
+    <string name="sync_erreur">Network error</string>
+    <string name="sync_envoyees">%1$d note(s) sent</string>
+    <string name="sync_recues">%1$d note(s) received</string>
+
+    <!-- About -->
+    <string name="apropos_texte">GeoCarnet lets you create geolocated notes with a photo, a GPS position and a street name. Data is stored locally (SQLite) and can be synced to a remote MySQL database.</string>
+    <string name="titre_fiche_existante">Note</string>
+    <string name="supprimer">Delete</string>
+    <string name="fiche_modifiee">Note updated</string>
+    <string name="fiche_supprimee">Note deleted</string>
+</resources>
