@@ -12,9 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Base de données LOCALE (consigne n°5).
+ * Base de données LOCALE.
  * On l'écrit "à la main" avec SQLiteOpenHelper (PAS de bibliothèque Room)
- * afin de respecter la consigne n°0 : c'est nous qui écrivons le SQL.
  */
 public class LocalDb extends SQLiteOpenHelper {
 
