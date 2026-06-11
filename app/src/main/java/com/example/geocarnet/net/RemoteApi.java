@@ -21,16 +21,11 @@ import java.util.List;
  * peu sûr). On passe par une petite API PHP (add.php / list.php) qui, elle,
  * parle à MySQL. C'est l'approche standard pour une appli mobile.
  *
- * Tout le réseau est écrit à la main avec HttpURLConnection, et le JSON est
- * analysé à la main -> on respecte la consigne n°0 (pas de Retrofit/Volley).
- *
- * IMPORTANT : ces méthodes font du réseau, donc elles DOIVENT être appelées
- * depuis un thread secondaire (jamais sur le thread principal de l'interface).
  */
 public class RemoteApi {
 
-    // À adapter à votre serveur PHP.
-    // 10.0.2.2 = le "localhost" de votre PC, vu depuis l'émulateur Android.
+    // À adapter
+    // 10.0.2.2 = le "localhost" de PC, vu depuis l'émulateur Android.
     private static final String BASE = "http://10.0.2.2/geocarnet/";
 
     /** Envoie une fiche vers le serveur (requête POST). Renvoie true si OK. */
