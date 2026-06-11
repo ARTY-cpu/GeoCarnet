@@ -36,15 +36,8 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Écran d'une fiche. Il sert à la FOIS à :
- *   - CRÉER une nouvelle fiche (on arrive sans identifiant),
- *   - CONSULTER / MODIFIER une fiche existante (on arrive avec son identifiant).
- *
- * Il réunit plusieurs consignes :
- *   - prendre une photo et l'enregistrer localement,
- *   - lire la position GPS en temps réel,
- *   - géocodage (transformer lat/lon en nom de rue),
- *   - enregistrer / modifier / supprimer dans SQLite.
+ * Écran de création/édition d'une fiche.
+ * Sans identifiant = nouvelle fiche ; avec identifiant = consultation/modification.
  */
 public class EditFicheActivity extends AppCompatActivity implements LocationListener {
 
@@ -120,8 +113,6 @@ public class EditFicheActivity extends AppCompatActivity implements LocationList
         }
     }
 
-    // ----- PERMISSIONS (obligatoires depuis Android 6) ---------------------
-
     private void demanderPermissions() {
         String[] perms = {
                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -137,8 +128,6 @@ public class EditFicheActivity extends AppCompatActivity implements LocationList
         if (ficheId == -1) demarrerGps(); // GPS seulement en création
     }
 
-    // ----- GÉOLOCALISATION EN TEMPS RÉEL -----------------------------------
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -152,8 +141,7 @@ public class EditFicheActivity extends AppCompatActivity implements LocationList
             return;
         }
         try {
-            // 1) On affiche TOUT DE SUITE la dernière position connue (s'il y en a une),
-            //    sans attendre un nouveau point GPS.
+            // Afficher la dernière position connue sans attendre un nouveau fix GPS
             Location derniere = gps.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (derniere == null) {
                 derniere = gps.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -162,9 +150,7 @@ public class EditFicheActivity extends AppCompatActivity implements LocationList
                 appliquerPosition(derniere);
             }
 
-            // 2) On demande des mises à jour régulières : c'est le "temps réel".
-            //    On écoute le GPS ET le réseau (le réseau répond souvent plus vite,
-            //    notamment sur l'émulateur).
+            // GPS + réseau car le réseau répond souvent plus vite sur l'émulateur
             if (gps.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 gps.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 1, this);
             }
@@ -230,18 +216,15 @@ public class EditFicheActivity extends AppCompatActivity implements LocationList
     public void onStatusChanged(String provider, int status, Bundle extras) {
     }
 
-    // ----- PHOTO -----------------------------------------------------------
-
     private void prendrePhoto() {
-        // 1) On prépare un fichier vide dans le dossier privé de l'application.
+        // Fichier de destination dans le dossier privé de l'appli
         File dossier = getExternalFilesDir(null);
         File fichier = new File(dossier, "photo_" + System.currentTimeMillis() + ".jpg");
         cheminPhoto = fichier.getAbsolutePath();
 
-        // 2) On obtient une URI sécurisée via FileProvider (obligatoire Android 7+).
+        // FileProvider requis depuis Android 7 pour partager le fichier avec l'appareil photo
         Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".fichiers", fichier);
 
-        // 3) On lance l'appli "appareil photo" en lui indiquant où enregistrer.
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         startActivityForResult(intent, CODE_PHOTO);
@@ -255,8 +238,6 @@ public class EditFicheActivity extends AppCompatActivity implements LocationList
             apercu.setImageURI(Uri.fromFile(new File(cheminPhoto)));
         }
     }
-
-    // ----- ENREGISTREMENT (création OU modification) -----------------------
 
     private void enregistrer() {
         if (champTitre.getText().toString().isEmpty()) {
@@ -285,8 +266,6 @@ public class EditFicheActivity extends AppCompatActivity implements LocationList
         }
         finish(); // on revient à la liste
     }
-
-    // ----- SUPPRESSION -----------------------------------------------------
 
     private void supprimer() {
         if (ficheId != -1) {

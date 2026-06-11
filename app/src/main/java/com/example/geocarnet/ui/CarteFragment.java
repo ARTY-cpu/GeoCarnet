@@ -23,15 +23,8 @@ import org.json.JSONObject;
 import java.util.List;
 
 /**
- * Écran "Carte".
- *
- * On affiche une carte OpenStreetMap dans une WebView qui charge un petit
- * fichier HTML (assets/map.html) contenant la carte Leaflet.
- * on écrit le "pont" entre Java et JavaScript, dans LES DEUX SENS :
- *   - Java -> JavaScript : on envoie la liste des fiches (JSON) pour poser les marqueurs.
- *   - JavaScript -> Java : quand on clique un marqueur, le JS appelle "Android.ouvrirFiche(id)"
- *     qui ouvre la fiche correspondante.
- * Leaflet ne sert qu'à dessiner la carte.
+ * Carte Leaflet/OpenStreetMap dans une WebView (map.html).
+ * Java envoie les fiches en JSON au JS ; le JS rappelle Java quand on clique un marqueur.
  */
 public class CarteFragment extends Fragment {
 

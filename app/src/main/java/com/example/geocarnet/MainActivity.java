@@ -18,12 +18,8 @@ import com.example.geocarnet.ui.SyncFragment;
 import com.google.android.material.navigation.NavigationView;
 
 /**
- * Activité principale ( interface ergonomique).
- * Elle contient :
- *   - une barre d'outils en haut (Toolbar),
- *   - un menu latéral coulissant (Navigation Drawer).
- * Selon l'entrée choisie dans le menu, on affiche un Fragment différent
- * dans la zone centrale.
+ * Activité principale avec menu latéral (Navigation Drawer).
+ * Chaque entrée du menu charge un fragment dans la zone centrale.
  */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,11 +31,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 1) La barre d'outils, qui sert aussi de barre d'action.
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // 2) Le menu latéral + le bouton "hamburger" qui l'ouvre/ferme.
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigation = findViewById(R.id.nav_view);
         navigation.setNavigationItemSelectedListener(this);
@@ -50,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        // 3) Au démarrage, on affiche la liste des fiches.
+        // Fragment de départ : la liste des fiches
         if (savedInstanceState == null) {
             afficher(new ListeFragment(), getString(R.string.menu_liste));
         }

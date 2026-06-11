@@ -19,12 +19,8 @@ import com.example.geocarnet.net.RemoteApi;
 import java.util.List;
 
 /**
- * Écran "Synchro" (consigne n°4 : base externe MySQL).
- *   - "Envoyer"   : pousse vers le serveur les fiches pas encore synchronisées.
- *   - "Récupérer" : télécharge les fiches du serveur et les ajoute en local.
- *
- * Le réseau est fait dans un Thread séparé pour ne pas bloquer l'interface
- * (Android interdit le réseau sur le thread principal).
+ * Synchronisation avec la base MySQL distante.
+ * Tout le réseau tourne dans un thread secondaire (interdit sur le thread principal).
  */
 public class SyncFragment extends Fragment {
 

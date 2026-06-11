@@ -76,11 +76,7 @@ public class LocalDb extends SQLiteOpenHelper {
         return id;
     }
 
-    /**
-     * Renvoie les fiches.
-     * Si "filtre" est vide -> toutes les fiches.
-     * Sinon -> seulement celles dont le titre contient "filtre" (recherche).
-     */
+    // Renvoie toutes les fiches, ou seulement celles dont le titre contient "filtre".
     public List<Fiche> lire(String filtre) {
         List<Fiche> liste = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
