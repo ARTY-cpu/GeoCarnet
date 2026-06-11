@@ -59,8 +59,12 @@ public class FicheAdapter extends RecyclerView.Adapter<FicheAdapter.Vue> {
         Fiche f = fiches.get(position);
         h.titre.setText(f.titre);
         h.rue.setText(f.rue);
-        // Petit symbole indiquant si la fiche est synchronisée avec MySQL.
-        h.etat.setText(f.synchro == 1 ? "\u2601" : "\u2022"); // nuage : point
+        // Petit repère : la fiche est-elle déjà envoyée vers MySQL ?
+        if (f.synchro == 1) {
+            h.etat.setText("OK");   // déjà envoyée sur le serveur
+        } else {
+            h.etat.setText("");     // encore seulement en local
+        }
 
         // On charge la photo depuis le fichier local, si elle existe.
         if (f.cheminPhoto != null && new File(f.cheminPhoto).exists()) {

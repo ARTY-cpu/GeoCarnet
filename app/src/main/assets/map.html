@@ -45,20 +45,15 @@
         fiches.forEach(function (f) {
             if (f.lat === 0 && f.lon === 0) return; // position non renseignée
 
-            // Si plusieurs fiches sont au MÊME endroit, on décale légèrement les
-            // suivantes (~13 m) dans des directions différentes, pour qu'elles
-            // ne se cachent pas les unes les autres et restent toutes cliquables.
+            // Si plusieurs fiches sont au MÊME endroit, on décale un peu les
+            // suivantes vers la droite, pour qu'elles ne se cachent pas et
+            // restent toutes cliquables.
             var cle = f.lat.toFixed(5) + "," + f.lon.toFixed(5);
-            var n = dejaVus[cle] || 0;
+            var n = dejaVus[cle] || 0;       // combien de fiches déjà placées ici ?
             dejaVus[cle] = n + 1;
-            var lat = f.lat;
-            var lon = f.lon;
-            if (n > 0) {
-                lat = f.lat + 0.00012 * Math.cos(n);
-                lon = f.lon + 0.00012 * Math.sin(n);
-            }
+            var lon = f.lon + n * 0.00015;   // 1re fiche : 0 ; 2e : un peu ; 3e : un peu plus
 
-            var m = L.marker([lat, lon]).addTo(carte);
+            var m = L.marker([f.lat, lon]).addTo(carte);
 
             // La bulle reste affichée au clic sur le marqueur. Le TITRE y est un
             // lien cliquable : cliquer dessus ouvre la fiche correspondante.
@@ -66,7 +61,7 @@
                 + echap(f.titre) + '</a></b><br>' + echap(f.rue);
             m.bindPopup(html);
 
-            points.push([lat, lon]);
+            points.push([f.lat, lon]);
         });
         // On ajuste le zoom pour voir tous les marqueurs d'un coup.
         if (points.length > 0) carte.fitBounds(points);
