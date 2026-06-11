@@ -41,10 +41,10 @@ import java.util.Locale;
  *   - CONSULTER / MODIFIER une fiche existante (on arrive avec son identifiant).
  *
  * Il réunit plusieurs consignes :
- *   - consigne n°3 : prendre une photo et l'enregistrer localement,
- *   - consigne n°2 : lire la position GPS en temps réel,
- *   - consigne n°2 : géocodage (transformer lat/lon en nom de rue),
- *   - consigne n°5 : enregistrer / modifier / supprimer dans SQLite.
+ *   - prendre une photo et l'enregistrer localement,
+ *   - lire la position GPS en temps réel,
+ *   - géocodage (transformer lat/lon en nom de rue),
+ *   - enregistrer / modifier / supprimer dans SQLite.
  */
 public class EditFicheActivity extends AppCompatActivity implements LocationListener {
 
