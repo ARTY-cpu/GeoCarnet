@@ -18,7 +18,7 @@ import com.example.geocarnet.ui.SyncFragment;
 import com.google.android.material.navigation.NavigationView;
 
 /**
- * Activité principale (consigne n°1 : interface ergonomique).
+ * Activité principale ( interface ergonomique).
  * Elle contient :
  *   - une barre d'outils en haut (Toolbar),
  *   - un menu latéral coulissant (Navigation Drawer).
